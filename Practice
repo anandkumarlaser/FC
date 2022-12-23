@@ -1,0 +1,110 @@
+const companies= [
+  {name: "Full Creative", category: "Product"},
+  {name: "Amazon", category: "Product"},
+  {name: "TCS", category: "Service"},
+  {name: "Zoho", category: "Product"},
+  {name: "Google", category: "Product"},
+  {name: "Accenture", category: "Service"},
+  {name: "Mahindra Tech City", category: "Service"},
+  {name: "Freshworks", category: "Product"},
+  {name: "Microsoft", category: "Product"}
+];
+
+const numbers = [1,5,6,4,3,2,-1];
+
+
+//forEach
+companies.forEach((comp)=> console.log(`Company Name: ${comp.name}`))
+
+//map
+
+let companyCategory = companies.map((comp)=>  comp.category)
+
+console.log(companyCategory)
+
+// filter
+
+let retailOnlyCompanies = companies.filter((company)=> company.category==="Product")
+console.log(retailOnlyCompanies)
+
+// reduce
+
+let sumOfArray = numbers.reduce(((accum,currVal)=> accum+currVal),0)
+console.log(sumOfArray)
+
+
+//Object Literal
+demoObject= {
+  name:'anand',age:24,location:'chennai'
+}
+console.log(demoObject.location)
+
+
+
+
+
+//factory function
+function hello(name,message)
+{
+return{
+    name:name,
+    message:message    
+}
+}
+
+const fun= hello('Anand','Hi');
+console.log(fun.name);
+console.log(fun.message);
+
+//constructor function
+function Demo (input)
+{
+    this.input = input
+}
+
+const func = new Demo('Hello')
+console.log(func.input)
+
+
+
+
+  //Promise
+let server_A_active= true;
+let server_B_active = true;
+
+function serverConnectionA () { return new Promise((res,rej)=>
+{
+   if (server_A_active) 
+   setTimeout(()=>{
+       res(("Data fetched from server A!"))},
+       4000);  
+   else {rej('server A not active, please try again');}
+})
+.then(result => console.log(result), 
+error => console.log(error))
+}
+
+function serverConnectionB () { return new Promise((res,rej)=>
+{
+   if (server_B_active) 
+   setTimeout(()=>{
+       res(("Data fetched from server B!"))},
+       5000);  
+   else {rej('server B not active, please try again');}
+})
+.then(result => console.log(result), 
+error => console.log(error))
+}
+
+
+//Async await
+async function asyncexample()
+{
+ 
+   await serverConnectionA()
+   console.log ("Server A is active");
+   await serverConnectionB()
+   console.log("Server B is active");
+  
+}
+asyncexample()
